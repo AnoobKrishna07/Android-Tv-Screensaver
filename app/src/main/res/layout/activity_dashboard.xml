@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101010"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TV Video Screensaver"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="40dp"/>
+
+    <Button
+        android:id="@+id/btnPreview"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:text="▶ Preview Video"/>
+
+    <Button
+        android:id="@+id/btnLibrary"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:text="📂 Video Library"
+        android:layout_marginTop="12dp"/>
+
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:text="⚙ Settings"
+        android:layout_marginTop="12dp"/>
+
+    <Button
+        android:id="@+id/btnAbout"
+        android:layout_width="320dp"
+        android:layout_height="60dp"
+        android:text="ℹ About"
+        android:layout_marginTop="12dp"/>
+
+</LinearLayout>

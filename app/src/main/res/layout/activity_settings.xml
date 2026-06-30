@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TV Video Screensaver"
+        android:textSize="26sp"
+        android:textStyle="bold"/>
+
+    <RadioGroup
+        android:id="@+id/sourceGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radioBuiltin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Built-in Video"/>
+
+        <RadioButton
+            android:id="@+id/radioInternal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Internal Storage"/>
+
+        <RadioButton
+            android:id="@+id/radioUsb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USB Drive"/>
+
+        <RadioButton
+            android:id="@+id/radioNetwork"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Network URL"/>
+
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/checkLoop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loop Video"/>
+
+</LinearLayout>
