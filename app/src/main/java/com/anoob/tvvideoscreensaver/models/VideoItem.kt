@@ -3,8 +3,19 @@ package com.anoob.tvvideoscreensaver.models
 import android.net.Uri
 
 data class VideoItem(
-    val id: Long,
-    val name: String,
+
     val uri: Uri,
-    val duration: Long
+
+    val name: String,
+
+    val duration: Long,
+
+    val size: Long,
+
+    val width: Int,
+
+    val height: Int,
+
+    var selected: Boolean = false
+
 )

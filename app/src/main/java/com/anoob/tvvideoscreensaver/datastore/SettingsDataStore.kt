@@ -14,68 +14,71 @@ class SettingsDataStore(private val context: Context) {
 
     companion object {
 
-        val VIDEO_SOURCE =
-            stringPreferencesKey("video_source")
+
+        val PLAYLIST =
+            stringPreferencesKey("playlist")
 
         val LOOP =
             booleanPreferencesKey("loop")
 
-        val NETWORK_URL =
-            stringPreferencesKey("network_url")
+        val MUTE =
+            booleanPreferencesKey("mute")
+
     }
 
-    suspend fun saveVideoSource(source: String) {
+
+
+
+    suspend fun savePlaylist(list: List<String>) {
 
         context.dataStore.edit {
 
-            it[VIDEO_SOURCE] = source
+            it[PLAYLIST] =
+                list.joinToString("|")
 
         }
 
     }
 
     suspend fun saveLoop(loop: Boolean) {
-
         context.dataStore.edit {
-
             it[LOOP] = loop
-
         }
-
     }
-
-    suspend fun saveNetworkUrl(url: String) {
+    suspend fun saveMute(enabled: Boolean) {
 
         context.dataStore.edit {
 
-            it[NETWORK_URL] = url
+            it[MUTE] = enabled
 
         }
-
     }
-
-    val videoSource: Flow<String> =
-
-        context.dataStore.data.map {
-
-            it[VIDEO_SOURCE] ?: "BUILTIN"
-
-        }
 
     val loop: Flow<Boolean> =
-
         context.dataStore.data.map {
-
             it[LOOP] ?: true
+        }
+    val mute: Flow<Boolean> =
+        context.dataStore.data.map {
+
+            it[MUTE] ?: false
 
         }
-
-    val networkUrl: Flow<String> =
+    val playlist: Flow<List<String>> =
 
         context.dataStore.data.map {
 
-            it[NETWORK_URL] ?: ""
+            val data = it[PLAYLIST] ?: ""
+
+            if (data.isEmpty()) {
+
+                emptyList()
+
+            } else {
+
+                data.split("|")
+
+            }
 
         }
-
 }

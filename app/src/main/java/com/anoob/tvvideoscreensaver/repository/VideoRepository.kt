@@ -11,4 +11,7 @@ class VideoRepository(private val context: Context) {
             "android.resource://${context.packageName}/${R.raw.sample}"
         )
     }
+    fun getDefaultVideo(): Uri {
+        return getVideoUri()
+    }
 }

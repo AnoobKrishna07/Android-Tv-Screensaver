@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.anoob.tvvideoscreensaver.datastore.SettingsDataStore
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(application: Application) :
@@ -11,15 +12,11 @@ class SettingsViewModel(application: Application) :
 
     private val dataStore = SettingsDataStore(application)
 
-    val videoSource = dataStore.videoSource
-    val loop = dataStore.loop
-    val networkUrl = dataStore.networkUrl
+    val loop: Flow<Boolean> = dataStore.loop
 
-    fun saveVideoSource(source: String) {
-        viewModelScope.launch {
-            dataStore.saveVideoSource(source)
-        }
-    }
+    val mute: Flow<Boolean> = dataStore.mute
+
+
 
     fun saveLoop(enabled: Boolean) {
         viewModelScope.launch {
@@ -27,9 +24,9 @@ class SettingsViewModel(application: Application) :
         }
     }
 
-    fun saveNetworkUrl(url: String) {
+    fun saveMute(enabled: Boolean) {
         viewModelScope.launch {
-            dataStore.saveNetworkUrl(url)
+            dataStore.saveMute(enabled)
         }
     }
 }

@@ -2,46 +2,246 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#101010"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:background="@drawable/dashboard_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="36dp">
+
+    <!-- Logo -->
+
+    <ImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="12dp"
+        android:src="@mipmap/ic_launcher"/>
+
+    <!-- App Name -->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
         android:text="TV Video Screensaver"
         android:textColor="@android:color/white"
         android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="40dp"/>
+        android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/btnPreview"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:text="▶ Preview Video"/>
+    <!-- Subtitle -->
 
-    <Button
-        android:id="@+id/btnLibrary"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:text="📂 Video Library"
-        android:layout_marginTop="12dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="Beautiful Video Screen Saver for Android TV"
+        android:textColor="#B0BEC5"
+        android:textSize="15sp"/>
 
-    <Button
-        android:id="@+id/btnSettings"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:text="⚙ Settings"
-        android:layout_marginTop="12dp"/>
+    <!-- ================= First Row ================= -->
 
-    <Button
-        android:id="@+id/btnAbout"
-        android:layout_width="320dp"
-        android:layout_height="60dp"
-        android:text="ℹ About"
-        android:layout_marginTop="12dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Preview -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnPreview"
+            android:layout_width="220dp"
+            android:layout_height="120dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="#1565C0"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            app:strokeColor="#64B5F6"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:src="@drawable/ic_preview"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preview"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Play Screen Saver"
+                    android:textColor="#E3F2FD"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Library -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnLibrary"
+            android:layout_width="220dp"
+            android:layout_height="120dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="#6A1B9A"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            app:strokeColor="#CE93D8"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:src="@drawable/ic_video_library"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Video Library"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Browse Videos"
+                    android:textColor="#F3E5F5"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- ================= Second Row ================= -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Settings -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnSettings"
+            android:layout_width="220dp"
+            android:layout_height="120dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="#EF6C00"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            app:strokeColor="#FFCC80"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:src="@drawable/ic_settings"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Configure App"
+                    android:textColor="#FFF3E0"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- About -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btnAbout"
+            android:layout_width="220dp"
+            android:layout_height="120dp"
+            android:layout_margin="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="#2E7D32"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            app:strokeColor="#A5D6A7"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:src="@drawable/ic_info" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="About"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Version &amp; Credits"
+                    android:textColor="#E8F5E9"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
 
 </LinearLayout>

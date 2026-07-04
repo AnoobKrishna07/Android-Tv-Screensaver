@@ -2,10 +2,10 @@ package com.anoob.tvvideoscreensaver.ui
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.anoob.tvvideoscreensaver.MainActivity
 import com.anoob.tvvideoscreensaver.databinding.ActivityDashboardBinding
 import com.anoob.tvvideoscreensaver.settings.SettingsActivity
-import androidx.appcompat.app.AppCompatActivity
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -22,7 +22,7 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         binding.btnLibrary.setOnClickListener {
-            startActivity(Intent(this, SettingsActivity::class.java))
+            startActivity(Intent(this, VideoLibraryActivity::class.java))
         }
 
         binding.btnSettings.setOnClickListener {
@@ -30,7 +30,7 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         binding.btnAbout.setOnClickListener {
-            // We'll implement this later
+            startActivity(Intent(this, AboutActivity::class.java))
         }
     }
 }

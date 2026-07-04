@@ -1,11 +1,13 @@
 package com.anoob.tvvideoscreensaver.settings
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.anoob.tvvideoscreensaver.databinding.ActivitySettingsBinding
 import com.anoob.tvvideoscreensaver.viewmodel.SettingsViewModel
+import com.google.android.material.card.MaterialCardView
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -22,31 +24,36 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         observeSettings()
-
         setupListeners()
+
+        // Card Focus
+        setupCardFocus(binding.cardLoop)
+        setupCardFocus(binding.cardMute)
+
+
+        // Switch Focus
+        setupFocus(binding.switchLoop)
+        setupFocus(binding.switchMute)
+        binding.switchLoop.requestFocus()
+
     }
 
     private fun observeSettings() {
 
         lifecycleScope.launch {
 
-            viewModel.videoSource.collectLatest {
+            viewModel.loop.collectLatest {
 
-                when (it) {
+                binding.switchLoop.isChecked = it
 
-                    "BUILTIN" -> binding.radioBuiltin.isChecked = true
-                    "INTERNAL" -> binding.radioInternal.isChecked = true
-                    "USB" -> binding.radioUsb.isChecked = true
-                    "NETWORK" -> binding.radioNetwork.isChecked = true
-                }
             }
         }
 
         lifecycleScope.launch {
 
-            viewModel.loop.collectLatest {
+            viewModel.mute.collectLatest {
 
-                binding.checkLoop.isChecked = it
+                binding.switchMute.isChecked = it
 
             }
         }
@@ -54,34 +61,76 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun setupListeners() {
 
-        binding.radioBuiltin.setOnClickListener {
-
-            viewModel.saveVideoSource("BUILTIN")
-
-        }
-
-        binding.radioInternal.setOnClickListener {
-
-            viewModel.saveVideoSource("INTERNAL")
-
-        }
-
-        binding.radioUsb.setOnClickListener {
-
-            viewModel.saveVideoSource("USB")
-
-        }
-
-        binding.radioNetwork.setOnClickListener {
-
-            viewModel.saveVideoSource("NETWORK")
-
-        }
-
-        binding.checkLoop.setOnCheckedChangeListener { _, checked ->
+        binding.switchLoop.setOnCheckedChangeListener { _, checked ->
 
             viewModel.saveLoop(checked)
 
+        }
+
+        binding.switchMute.setOnCheckedChangeListener { _, checked ->
+
+            viewModel.saveMute(checked)
+
+        }
+
+    }
+
+    /**
+     * Animation for Material Cards
+     */
+    private fun setupCardFocus(card: MaterialCardView) {
+
+        card.setOnFocusChangeListener { _, hasFocus ->
+
+            if (hasFocus) {
+
+                card.animate()
+                    .scaleX(1.03f)
+                    .scaleY(1.03f)
+                    .setDuration(150)
+                    .start()
+
+                card.strokeWidth = 5
+                card.cardElevation = 20f
+
+            } else {
+
+                card.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .setDuration(150)
+                    .start()
+
+                card.strokeWidth = 2
+                card.cardElevation = 8f
+            }
+        }
+    }
+
+    /**
+     * Animation for Switches
+     */
+    private fun setupFocus(view: View) {
+
+        view.setOnFocusChangeListener { _, hasFocus ->
+
+            if (hasFocus) {
+
+                view.animate()
+                    .scaleX(1.15f)
+                    .scaleY(1.15f)
+                    .setDuration(150)
+                    .start()
+
+            } else {
+
+                view.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .setDuration(150)
+                    .start()
+
+            }
         }
     }
 }

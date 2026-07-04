@@ -1,10 +1,13 @@
 package com.anoob.tvvideoscreensaver
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.media3.ui.PlayerView
 import com.anoob.tvvideoscreensaver.player.VideoPlayerManager
 import com.anoob.tvvideoscreensaver.repository.VideoRepository
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,9 +22,30 @@ class MainActivity : AppCompatActivity() {
 
         videoPlayerManager = VideoPlayerManager(this, playerView)
 
-        val repository = VideoRepository(this)
+        val intentUri = intent.getStringExtra("video_uri")
 
-        videoPlayerManager.play(repository.getVideoUri())
+        lifecycleScope.launch {
+
+            if (intentUri != null) {
+
+                videoPlayerManager.playPlaylist(
+
+                    listOf(Uri.parse(intentUri))
+
+                )
+
+            } else {
+
+                val repository = VideoRepository(this@MainActivity)
+
+                videoPlayerManager.playPlaylist(
+
+                    listOf(repository.getDefaultVideo())
+
+                )
+
+            }
+        }
     }
 
     override fun onStop() {

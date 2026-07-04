@@ -1,54 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp">
+    android:background="@drawable/dashboard_background">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TV Video Screensaver"
-        android:textSize="26sp"
-        android:textStyle="bold"/>
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <RadioGroup
-        android:id="@+id/sourceGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        <!-- Logo -->
 
-        <RadioButton
-            android:id="@+id/radioBuiltin"
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Title -->
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Built-in Video"/>
+            android:text="Settings"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="12dp"/>
 
-        <RadioButton
-            android:id="@+id/radioInternal"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Internal Storage"/>
+            android:text="TV Video Screensaver v1.0"
+            android:textSize="14sp"
+            android:textColor="#B0BEC5"
+            android:layout_marginBottom="28dp"/>
 
-        <RadioButton
-            android:id="@+id/radioUsb"
+        <!-- Loop Playback Card -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLoop"
+            android:layout_width="600dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="16dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:cardBackgroundColor="#18203A"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            app:strokeColor="#42A5F5"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="17dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🔁 Loop Playback"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switchLoop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:thumbTint="@android:color/white"
+                    android:trackTint="#42A5F5"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"/>
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <!-- Mute Screen Saver -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMute"
+            android:layout_width="600dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="16dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:cardBackgroundColor="#18203A"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            app:strokeColor="#4CAF50"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🔇 Mute Screen Saver"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switchMute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:thumbTint="@android:color/white"
+                    android:trackTint="#42A5F5"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Auto Preview -->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPreview"
+            android:layout_width="600dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="16dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:cardBackgroundColor="#18203A"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp"
+            app:strokeColor="#AB47BC"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="▶ Auto Play Preview"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"
+                    android:textStyle="bold"/>
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switchPreview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:thumbTint="@android:color/white"
+                    android:trackTint="#AB47BC"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="USB Drive"/>
+            android:text="© 2026 Anoob Krishna"
+            android:textColor="#90A4AE"
+            android:textSize="15sp"
+            android:layout_marginBottom="20dp"/>
+    </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/radioNetwork"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Network URL"/>
 
-    </RadioGroup>
-
-    <CheckBox
-        android:id="@+id/checkLoop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Loop Video"/>
-
-</LinearLayout>
+</ScrollView>

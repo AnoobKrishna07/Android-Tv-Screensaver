@@ -1,35 +1,65 @@
 package com.anoob.tvvideoscreensaver.dream
 
-import android.net.Uri
 import android.service.dreams.DreamService
 import androidx.media3.ui.PlayerView
 import com.anoob.tvvideoscreensaver.R
 import com.anoob.tvvideoscreensaver.player.VideoPlayerManager
+import com.anoob.tvvideoscreensaver.repository.PlaylistRepository
+import com.anoob.tvvideoscreensaver.repository.VideoRepository
+import kotlinx.coroutines.*
+import android.util.Log
 
 class VideoDreamService : DreamService() {
 
-    private lateinit var videoPlayerManager: VideoPlayerManager
+    private lateinit var playerManager: VideoPlayerManager
+
+    private val scope = CoroutineScope(
+        Dispatchers.Main + SupervisorJob()
+    )
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
 
-        isFullscreen = true
         isInteractive = false
+        isFullscreen = true
 
         setContentView(R.layout.activity_main)
 
         val playerView = findViewById<PlayerView>(R.id.playerView)
 
-        videoPlayerManager = VideoPlayerManager(this, playerView)
+        playerManager = VideoPlayerManager(this, playerView)
 
-        val uri = Uri.parse("android.resource://$packageName/${R.raw.sample}")
+        scope.launch {
 
-        videoPlayerManager.play(uri)
+            val playlistRepository =
+                PlaylistRepository(this@VideoDreamService)
+
+            val playlist =
+                playlistRepository.getPlaylist()
+
+            if (playlist.isNotEmpty()) {
+                Log.d("DreamService", "Playlist size = ${playlist.size}")
+                playerManager.playPlaylist(playlist)
+
+            } else {
+
+                val repository =
+                    VideoRepository(this@VideoDreamService)
+
+                playerManager.playPlaylist(
+
+                    listOf(repository.getDefaultVideo())
+
+                )
+            }
+        }
     }
 
     override fun onDreamingStopped() {
         super.onDreamingStopped()
 
-        videoPlayerManager.release()
+        scope.cancel()
+
+        playerManager.release()
     }
 }
