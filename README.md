@@ -29,7 +29,7 @@ Built using **Kotlin**, **Media3 (ExoPlayer)**, **MVVM Architecture**, and **And
 
 | Dashboard | Video Library |
 |-----------|---------------|
-| *(Add Screenshot)* | *(Add Screenshot)* |
+| dashboard.png | *(Add Screenshot)* |
 
 | Settings | Screensaver |
 |----------|-------------|
