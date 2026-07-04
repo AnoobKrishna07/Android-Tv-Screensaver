@@ -23,19 +23,7 @@ Built using **Kotlin**, **Media3 (ExoPlayer)**, **MVVM Architecture**, and **And
 
 ---
 
-## 📱 Screenshots
 
-> Add screenshots here after uploading them.
-
-| Dashboard | Video Library |
-|-----------|---------------|
-| dashboard.png | *(Add Screenshot)* |
-
-| Settings | Screensaver |
-|----------|-------------|
-| *(Add Screenshot)* | *(Add Screenshot)* |
-
----
 
 ## 🛠 Tech Stack
 
