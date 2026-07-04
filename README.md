@@ -148,7 +148,7 @@ If you found this project useful, consider giving it a ⭐ on GitHub.
 
 It helps others discover the project and motivates future improvements.
 
-/*
- * Copyright (c) 2026 Anoob Krishna S N.
- * All rights reserved.
- */
+ 
+ Copyright (c) 2026 Anoob Krishna.
+ All rights reserved.
+
